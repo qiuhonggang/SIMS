@@ -36,11 +36,22 @@ public interface UserinfoService {
 
     /**
      * 添加用户信息
-     * @param username 用户名
-     * @param password 密码
-     * @param name 姓名
-     * @param phone 手机号
+     * @param tblUserinfo 用户
      * @throws Exception
      */
-    void addUser(String username,String password,String name,String phone) throws Exception;
+    void addUser(TblUserinfo tblUserinfo) throws Exception;
+
+    /**
+     * 更新用户信息
+     * @param tblUserinfo 用户
+     * @throws Exception
+     */
+    void updateUser(TblUserinfo tblUserinfo) throws Exception;
+
+    /**
+     * 删除用户信息
+     * @param tblUserinfo
+     * @throws Exception
+     */
+    void delUser(TblUserinfo tblUserinfo) throws Exception;
 }

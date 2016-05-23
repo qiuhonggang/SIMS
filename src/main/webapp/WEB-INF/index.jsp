@@ -53,7 +53,7 @@
                                                     type="button">
                                                 <i class="fa fa-reorder"></i>
                                             </button>
-                                            <a href="#" class="navbar-brand">admin</a>
+                                            <a href="#" class="navbar-brand">${sessionScope.get("user").getUsinUsername()}</a>
                                         </div>
                                         <div class="navbar-collapse " id="navbar">
                                             <ul class="nav navbar-nav">

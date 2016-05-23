@@ -120,7 +120,7 @@
             colModel: [{
                 name: "pkId",
                 index: "pkId",
-                editable: false,
+                editable: true,
                 width: 60,
                 sorttype: "int",
                 search: true
@@ -149,18 +149,20 @@
             viewrecords: true,
             sortname : 'pkId',
             sortorder : "asc",
-            editurl: "/addUser",
+            editurl: "/operUser",
             hidegrid: false
         });
         $("#table_list_2").jqGrid("navGrid", "#pager_list_2", {
             edit: true,
             add: true,
             del: true,
-            search: false
+            search: false,
+            refresh:true
         }, {height: 300, reloadAfterSubmit: false
-        }, {height: 300, reloadAfterSubmit: true
-        }, {reloadAfterSubmit: true
-        });
+        }, {height: 300, reloadAfterSubmit: false
+        }, {reloadAfterSubmit: false
+        },{});
+
         $(window).bind("resize", function () {
             var width = $(".jqGrid_wrapper").width();
             $("#table_list_2").setGridWidth(width)

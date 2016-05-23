@@ -54,6 +54,14 @@ public class TblUserinfo {
         this.usinPhone = usinPhone;
     }
 
+    public TblUserinfo(BigDecimal pkId, String usinUsername, String usinPassword,String usinName,String usinPhone){
+        this.pkId = pkId;
+        this.usinUsername = usinUsername;
+        this.usinPassword = usinPassword;
+        this.usinName = usinName;
+        this.usinPhone = usinPhone;
+    }
+
     public TblUserinfo(){}
 
     /**
