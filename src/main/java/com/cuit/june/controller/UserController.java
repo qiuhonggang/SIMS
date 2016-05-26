@@ -3,6 +3,7 @@ package com.cuit.june.controller;
 import com.cuit.june.pojo.TblUserinfo;
 import com.cuit.june.services.UserinfoService;
 import com.cuit.june.util.JsonUtil;
+import com.cuit.june.util.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,8 @@ public class UserController {
     @Resource
     private UserinfoService userinfoService;
 
+    @Resource
+    private HttpServletRequest request;
 
     /**
      * 返回用户列表
@@ -46,26 +49,19 @@ public class UserController {
         TblUserinfo tblUserinfo;
         if (oper.equals("add")) {        //添加用户信息
             System.out.println("添加用户信息");
-            tblUserinfo = new TblUserinfo(usinUsername, usinPassword, usinName, usinPhone);
+            tblUserinfo = new TblUserinfo(usinUsername, MD5Util.encode(usinPassword), usinName, usinPhone);
             userinfoService.addUser(tblUserinfo);
         } else if (oper.equals("edit")) {   //编辑用户信息
             System.out.println("编辑用户信息" + pkId + "转换:" + new BigDecimal(pkId));
             tblUserinfo = new TblUserinfo(new BigDecimal(pkId), usinUsername, usinPassword, usinName, usinPhone);
             userinfoService.updateUser(tblUserinfo);
-        } else if (oper.equals("del")) {    //删除用户信息
-            System.out.println("删除用户信息"+pkId);
-            tblUserinfo = new TblUserinfo(new BigDecimal(pkId), usinUsername, usinPassword, usinName, usinPhone);
-            userinfoService.delUser(tblUserinfo);
+        }else if(oper.equals("del")){
+            userinfoService.delUser(new BigDecimal(pkId));
         }
         modelAndView.setViewName("user");
         return modelAndView;
     }
 
-    @RequestMapping(value = "delUser")
-    public void delUser(HttpServletRequest request){
-        System.out.println("删除用户信息"+request.getParameter("pkId"));
-
-    }
 
 
 }

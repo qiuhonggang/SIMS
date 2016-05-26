@@ -116,11 +116,11 @@
             shrinkToFit: true,
             rowNum: 20,
             rowList: [10, 20, 30],
-            colNames: ["序号", "用户名","密码","姓名","手机号"],
+            colNames: ["序号", "用户名", "密码", "姓名", "手机号"],
             colModel: [{
                 name: "pkId",
                 index: "pkId",
-                editable: true,
+                editable: false,
                 width: 60,
                 sorttype: "int",
                 search: true
@@ -129,17 +129,17 @@
                 index: "usinUsername",
                 editable: true,
                 width: 100
-            },{
+            }, {
                 name: "usinPassword",
                 index: "usinPassword",
                 editable: true,
                 width: 100
-            },{
+            }, {
                 name: "usinName",
                 index: "usinName",
                 editable: true,
                 width: 100
-            },{
+            }, {
                 name: "usinPhone",
                 index: "usinPhone",
                 editable: true,
@@ -147,8 +147,8 @@
             }],
             pager: "#pager_list_2",
             viewrecords: true,
-            sortname : 'pkId',
-            sortorder : "asc",
+            sortname: 'pkId',
+            sortorder: "asc",
             editurl: "/operUser",
             hidegrid: false
         });
@@ -157,17 +157,32 @@
             add: true,
             del: true,
             search: false,
-            refresh:true
-        }, {height: 300, reloadAfterSubmit: false
-        }, {height: 300, reloadAfterSubmit: false
-        }, {reloadAfterSubmit: false
-        },{});
+            refresh: true
+        }, {
+            height: 300, reloadAfterSubmit: false,
+            onclickSubmit: function (id, posdata) {
+                var rows = $("#table_list_2").jqGrid("getGridParam", "selrow");
+                var celldata = $("#table_list_2").jqGrid('getCell', rows, "pkId");
+                return {"pkId": celldata}
+            }
+        }, {
+            height: 300, reloadAfterSubmit: false
+        }, {
+            reloadAfterSubmit: false,
+            onclickSubmit: function (id, posdata) {
+                var rows = $("#table_list_2").jqGrid("getGridParam", "selrow");
+                var celldata = $("#table_list_2").jqGrid('getCell', rows, "pkId");
+                return {"pkId": celldata}
+            }
+        }, {});
+
 
         $(window).bind("resize", function () {
             var width = $(".jqGrid_wrapper").width();
             $("#table_list_2").setGridWidth(width)
         })
     });
+
 </script>
 </body>
 </html>

@@ -50,8 +50,8 @@ public interface UserinfoService {
 
     /**
      * 删除用户信息
-     * @param tblUserinfo
+     * @param id
      * @throws Exception
      */
-    void delUser(TblUserinfo tblUserinfo) throws Exception;
+    void delUser(BigDecimal id) throws Exception;
 }

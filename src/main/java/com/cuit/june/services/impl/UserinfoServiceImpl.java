@@ -96,15 +96,15 @@ public class UserinfoServiceImpl implements UserinfoService {
     /**
      * 删除用户信息
      *
-     * @param tblUserinfo
+     * @param id
      * @throws Exception
      */
-    public void delUser(TblUserinfo tblUserinfo) throws Exception {
-        System.out.println("进入删除方法" + tblUserinfo.getPkId());
-        if (tblUserinfo != null && !tblUserinfo.getUsinUsername().equals("") && tblUserinfo.getUsinUsername() != null) {
-            System.out.println("删除用户信息" + tblUserinfo.getPkId());
-            tblUserinfoMapper.deleteByPrimaryKey(tblUserinfo.getPkId());
-            System.out.println("删除用户信息成功----username:" + tblUserinfo.getUsinUsername());
+    public void delUser(BigDecimal id) throws Exception {
+        System.out.println("进入删除方法" + id);
+        if (id != null && !id.equals("") && getUserById(id) != null) {
+            System.out.println("删除用户信息" + id);
+            tblUserinfoMapper.deleteByPrimaryKey(id);
+            System.out.println("删除用户信息成功----username:" + id);
         } else {
             throw new Exception("用户为空");
         }
