@@ -51,6 +51,21 @@ public class TblSupplier {
      *
      * @mbggenerated
      */
+
+    public TblSupplier(BigDecimal pkId,String suppNumber,String suppName,String suppPhone,String suppAddr){
+        this.pkId = pkId;
+        this.suppNumber = suppNumber;
+        this.suppName = suppName;
+        this.suppPhone = suppPhone;
+        this.suppAddr = suppAddr;
+    }
+
+    public TblSupplier(String suppNumber,String suppName,String suppPhone,String suppAddr){
+        this.suppNumber = suppNumber;
+        this.suppName = suppName;
+        this.suppPhone = suppPhone;
+        this.suppAddr = suppAddr;
+    }
     public BigDecimal getPkId() {
         return pkId;
     }

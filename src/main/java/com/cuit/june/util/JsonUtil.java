@@ -1,6 +1,7 @@
 package com.cuit.june.util;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonNull;
 
 /**
@@ -9,7 +10,9 @@ import com.google.gson.JsonNull;
 public class JsonUtil
 {
 
-    private static Gson gson=new Gson();
+    private static Gson gson=new GsonBuilder()
+            .setDateFormat("yyyy-MM-dd")
+            .create();
 
 
     /**

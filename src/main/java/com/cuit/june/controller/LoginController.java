@@ -43,6 +43,11 @@ public class LoginController {
         }
     }
 
+    @RequestMapping(value = "login")
+    public String login(){
+        return "login";
+    }
+
     /**
      * 退出
      * @return

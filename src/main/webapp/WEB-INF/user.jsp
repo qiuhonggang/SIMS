@@ -54,7 +54,7 @@
                                                     type="button">
                                                 <i class="fa fa-reorder"></i>
                                             </button>
-                                            <a href="#" class="navbar-brand">admin</a>
+                                            <a href="#" class="navbar-brand">${sessionScope.get("user").usinUsername}</a>
                                         </div>
                                         <div class="navbar-collapse " id="navbar">
                                             <ul class="nav navbar-nav">
@@ -62,7 +62,7 @@
                                                     <a href="/index">首页</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"> 货物</a>
+                                                    <a href="/goods"> 商品</a>
                                                 </li>
                                                 <li>
                                                     <a href="#"> 记录</a>
@@ -71,7 +71,7 @@
                                                     <a href="#"> 库存</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"> 供应商</a>
+                                                    <a href="/supplier"> 供应商</a>
                                                 </li>
                                                 <li class="active">
                                                     <a href="/userList"> 用户</a>
@@ -157,7 +157,7 @@
             add: true,
             del: true,
             search: false,
-            refresh: true
+            refresh: false
         }, {
             height: 300, reloadAfterSubmit: false,
             onclickSubmit: function (id, posdata) {

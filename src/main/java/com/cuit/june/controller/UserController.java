@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -24,8 +23,6 @@ public class UserController {
     @Resource
     private UserinfoService userinfoService;
 
-    @Resource
-    private HttpServletRequest request;
 
     /**
      * 返回用户列表
@@ -45,6 +42,7 @@ public class UserController {
      * 添加用户
      */
     @RequestMapping(value = "operUser")
+    //参数由spring mvc框架传入
     public ModelAndView operUser(String oper, String pkId, String usinUsername, String usinPassword, String usinName, String usinPhone, ModelAndView modelAndView) throws Exception {
         TblUserinfo tblUserinfo;
         if (oper.equals("add")) {        //添加用户信息
@@ -53,9 +51,9 @@ public class UserController {
             userinfoService.addUser(tblUserinfo);
         } else if (oper.equals("edit")) {   //编辑用户信息
             System.out.println("编辑用户信息" + pkId + "转换:" + new BigDecimal(pkId));
-            tblUserinfo = new TblUserinfo(new BigDecimal(pkId), usinUsername, usinPassword, usinName, usinPhone);
+            tblUserinfo = new TblUserinfo(new BigDecimal(pkId), usinUsername, MD5Util.encode(usinPassword), usinName, usinPhone);
             userinfoService.updateUser(tblUserinfo);
-        }else if(oper.equals("del")){
+        }else if(oper.equals("del")){  //删除用户信息
             userinfoService.delUser(new BigDecimal(pkId));
         }
         modelAndView.setViewName("user");

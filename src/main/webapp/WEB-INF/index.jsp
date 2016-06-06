@@ -61,16 +61,16 @@
                                                     <a href="/index">首页</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"> 货物</a>
+                                                    <a href="/goods"> 商品</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"> 记录</a>
+                                                    <a href="/record"> 记录</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"> 库存</a>
+                                                    <a href="/inout"> 库存</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"> 供应商</a>
+                                                    <a href="/supplier"> 供应商</a>
                                                 </li>
                                                 <li>
                                                     <a href="/userList"> 用户</a>
